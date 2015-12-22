@@ -7,19 +7,27 @@ public class Wall : ObjectZone {
 	[SerializeField]float posY,posY2;
 	int minDistance = -2;
 	int maxDistance = 2;
+	ColorTheme colorTheme;
 	//ระยะทางต่ำสุด -3 มากสุด 3
 	//ช่องว่าง 6
 	// Use this for initialization
+	void Awake(){
+		colorTheme = GameManager.instance.colorTheme;
+	}
 	void Start () {
 		
 	}
+	void OnGameInit(){
+		
+		Messenger.AddListener(GameEvent.CHANGE_COLOR, OnChangeColor);
+		OnChangeColor ();
+	}
 	public void Wakeup(){
 		MoveTwoWall ();
-		//PingPongWall();
 	}
+
 	void OnDisable(){
-		Debug.Log ("Disable");
-		Messenger.RemoveListener(GameEvent.CHANGE_COLOR, OnChangeColor);
+		EventManager.OnChangeColor -= OnChangeColor;
 		wallUp.transform.localPosition = new Vector2 (0, 10);
 		wallDown.transform.localPosition = new Vector2 (0, -10);
 		wallUp.transform.DOKill (false);
@@ -29,14 +37,12 @@ public class Wall : ObjectZone {
 	}
 	// Wall เคลื่อนไหวแบบต่างๆ 
 	void OnEnable(){
-		Messenger.AddListener(GameEvent.CHANGE_COLOR, OnChangeColor);
+		//Messenger.AddListener (GameEvent.GAME_MANAGER_INIT,OnGameInit);
+		EventManager.OnChangeColor += OnChangeColor;
 		OnChangeColor ();
 	}
 
-	void OnChangeColor(){
-		wallUp.GetComponent<SpriteRenderer> ().DOColor (GameManager.instance.wallColor, 1).SetAutoKill();
-		wallDown.GetComponent<SpriteRenderer> ().DOColor (GameManager.instance.wallColor, 1).SetAutoKill();
-	}
+
 	void MoveOneWall(){
 		// 7 - 11 กำลังดี
 		posY = Random.Range (8, 11);
@@ -70,7 +76,33 @@ public class Wall : ObjectZone {
 	void PingPongMove(){
 		transform.DOLocalMoveY (transform.localPosition.y*-1, 5).OnComplete (PingPongMove);
 	}
+
+
+
+	public override void GetTheme ()
+	{
+		//base.GetTheme ();
+		Debug.Log("new TheTheme");
+	}
+	public override void GetBaseColor ()
+	{
+		//base.GetBaseColor ();
+		Debug.Log("new baseColor");
+	}
+	public override void GetBaseTheme ()
+	{
+		wallUp.GetComponent<SpriteRenderer> ().DOColor (colorTheme.BaseWallColor, 1).SetAutoKill();
+		wallDown.GetComponent<SpriteRenderer> ().DOColor (colorTheme.BaseWallColor, 1).SetAutoKill();
+	}
+		
+
+
+	void OnChangeColor(){
+		wallUp.GetComponent<SpriteRenderer> ().DOColor (colorTheme.WallColor, 1).SetAutoKill();
+		wallDown.GetComponent<SpriteRenderer> ().DOColor (colorTheme.WallColor, 1).SetAutoKill();
+	}
 	void OnLevelWasLoaded(int level) {
 		Messenger.AddListener(GameEvent.CHANGE_COLOR, OnChangeColor);
+		Messenger.AddListener (GameEvent.GAME_MANAGER_INIT,OnGameInit);
 	}
 }

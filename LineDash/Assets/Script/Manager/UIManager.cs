@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour {
 	public static UIManager instance;
 	[SerializeField]public GameObject UIGameOver,UIGameMenu;
 	public Button b_draw, b_delete,b_pause;
-	[SerializeField] Text score_txt;
+	[SerializeField] Text score_txt,gem_txt;
 	void Awake(){
 		instance = this;
 	}
@@ -24,6 +24,9 @@ public class UIManager : MonoBehaviour {
 
 	void SetScore(int score){
 		score_txt.text = score.ToString ();
+	}
+	void SetGem(int gem){
+		gem_txt.text = gem.ToString ();
 	}
 	void OnGameOver(){
 		UIGameOver.SetActive (true);

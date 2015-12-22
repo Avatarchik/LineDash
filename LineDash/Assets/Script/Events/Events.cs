@@ -5,6 +5,7 @@ public class GameEvent{
 	public const string GAME_START = "GAME_START";
 	public const string GAME_PAUSE = "GAME_PAUSE";
 	public const string CHANGE_COLOR = "CHANGE_COLOR";
+	public const string GAME_MANAGER_INIT = "GAME_MANAGER_INIT";
 }
 public class SpawnEvent{
 	public const string SPAWN_OBJECT = "SPAWN_OBJECT";
@@ -25,6 +26,7 @@ public class PlayerEvent{
 	public static readonly string PLAYER_LOAD_COMPLETE = "PlayerLoadComplete";
 	public static readonly string PLAYER_HIT_GOAL = "PlayerHitGoal";	
 	public static readonly string PLAYER_START = "PlayerStart";
+	public const string GET_GEM = "GET_GEM";
 		//Hitobject
 	public static readonly string HIT_SPIKE = "HitSpike";
 

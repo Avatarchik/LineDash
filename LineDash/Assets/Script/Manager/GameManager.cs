@@ -8,18 +8,23 @@ public class GameManager : MonoBehaviour {
 		public bool isDelete = false,gameEnd=false;
 		public int countDraw = 0;
 		public int limitDraw = 5;
-		public Color wallColor;
+		
 		[SerializeField]bool gameStart = false;
 		[SerializeField]bool gamePause = true;
+		[SerializeField]public ColorTheme colorTheme = new ColorTheme();
 		public static GameManager instance{
 				get{
 						if (_instance == null) {
 								_instance = new GameObject ("GameManager").AddComponent<GameManager> ();
 								DontDestroyOnLoad (GameManager.instance);
+								
 						}
 						return _instance;
 				}
 		}
+	public void Init(){
+		//Messenger.Broadcast (GameEvent.GAME_MANAGER_INIT);
+	}
 	private int _score = 0;
 	public int score{
 		get{
@@ -27,13 +32,25 @@ public class GameManager : MonoBehaviour {
 		}
 		set{
 			_score = value;
-			Debug.Log ("score is " + _score);
 			UIManager.instance.SendMessage ("SetScore",score);
-			if (score % 15 == 0) {
+			if (score % 15 == 0 && score != 0) {
 				ChangeColor ();
 			}
 		}
 	}
+	private int _gem = 0;
+	public int gem{
+		get{
+			return _gem;
+		}
+		set{
+			_gem = value;
+			Debug.Log ("GEM : " + _gem);
+			UIManager.instance.SendMessage ("SetGem", _gem);
+		}
+	}
+
+
 	public bool IsGameStart(){
 		return gameStart;
 	}
@@ -61,11 +78,13 @@ public class GameManager : MonoBehaviour {
 		//SendMessage
 	}
 	public void ChangeColor(){
-		wallColor = Random.Range (0, 10) > 5 ? Color.red : Color.yellow;
-		Messenger.Broadcast (GameEvent.CHANGE_COLOR);
+		//wallColor = Random.Range (0, 10) > 5 ? Color.red : Color.yellow;
+		colorTheme.GenerateWallColor();
+		EventManager.instance.ChangeColor ();
 	}
 
 	void OnGameOver(){
+		colorTheme.WallColor = colorTheme.BaseWallColor;
 		GameStop ();
 	}
 }

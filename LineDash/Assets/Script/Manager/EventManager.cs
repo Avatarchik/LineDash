@@ -13,6 +13,9 @@ public class EventManager : MonoBehaviour {
 
 		public delegate void SceneEvent(string mode);	
 		public static event SceneEvent OnSceneDispatch;
+
+		public delegate void ChangeColorEvent();
+		public static event ChangeColorEvent OnChangeColor;
 		
 
 		private static EventManager _instance;
@@ -26,7 +29,9 @@ public class EventManager : MonoBehaviour {
 						return _instance;
 				}
 		}
-
+		public void ChangeColor(){
+			OnChangeColor ();
+		}
 		public void RestartGame(string msg){
 				Debug.Log ("msg is " + msg);
 				//OnGameRestart("restart "+msg);

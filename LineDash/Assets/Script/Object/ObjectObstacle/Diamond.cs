@@ -5,7 +5,7 @@ public class Diamond : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 		if (other.tag == "Player") {
-			Debug.Log ("GET GEM");
+			GameManager.instance.gem++;
 			ObjectPool.instance.Recycle (this.gameObject);
 		}
 	} 

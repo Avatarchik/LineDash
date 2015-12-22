@@ -48,6 +48,7 @@
      <Compile Include="Assets\Demigiant\DOTween\Examples\Basics.cs" />
      <Compile Include="Assets\Demigiant\DOTween\Examples\Sequences.cs" />
      <Compile Include="Assets\Script\Events\Events.cs" />
+     <Compile Include="Assets\Script\Game\Starter.cs" />
      <Compile Include="Assets\Script\Manager\AssetManager.cs" />
      <Compile Include="Assets\Script\Manager\EventManager.cs" />
      <Compile Include="Assets\Script\Manager\GameManager.cs" />
@@ -78,6 +79,8 @@
      <Compile Include="Assets\Script\Object\Wall\itemSpawner\ItemSpawner.cs" />
      <Compile Include="Assets\Script\Object\mainClass\IObjectSwitch.cs" />
      <Compile Include="Assets\Script\Object\mainClass\ObjectZone.cs" />
+     <Compile Include="Assets\Script\Theme\ColorTheme.cs" />
+     <Compile Include="Assets\Script\Theme\Interface\IColorTheme.cs" />
      <Compile Include="Assets\Script\UI\Camera\CameraMultiResolution.cs" />
      <Compile Include="Assets\Script\UI\GameMenu.cs" />
      <Compile Include="Assets\Script\UI\GameOver.cs" />
