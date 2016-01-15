@@ -7,6 +7,12 @@ public class GameEvent{
 	public const string CHANGE_COLOR = "CHANGE_COLOR";
 	public const string GAME_MANAGER_INIT = "GAME_MANAGER_INIT";
 }
+public class CharacterEvent{
+	public const string CHANGE_CHARACTER = "CHANGE_CHARACTER";
+}
+public class ThemeEvent{
+	public const string CHANGE_THEME = "CHANGE_THEME";
+}
 public class SpawnEvent{
 	public const string SPAWN_OBJECT = "SPAWN_OBJECT";
 }

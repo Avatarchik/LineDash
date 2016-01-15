@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 //using Facebook;
 using System.IO;
+using System.Globalization;
 public class Utils : MonoBehaviour {
 
 	static Texture2D screenShot;
@@ -25,5 +27,33 @@ public class Utils : MonoBehaviour {
 		var wwwForm = new WWWForm();
 		wwwForm.AddBinaryData("image", bytes, "screenshot.png");
 	//	FB.API("me/photos", Facebook.HttpMethod.POST, null, wwwForm);
+	}
+	public static T RandomEnum<T>(){
+		System.Random rand = new System.Random ();
+		var v = System.Enum.GetValues (typeof(T));
+		return (T) v.GetValue (rand.Next(v.Length));
+	}
+		
+	public static Color HexToColor(string aStr) {
+		Color clr = new Color(0,0,0);
+		if(aStr!=null && aStr.Length>0) {
+			try {
+				string str = aStr.Substring(1, aStr.Length - 1);
+				clr.r = (float)System.Int32.Parse(str.Substring(0,2), 
+					NumberStyles.AllowHexSpecifier) / 255.0f;
+				clr.g = (float)System.Int32.Parse(str.Substring(2,2), 
+					NumberStyles.AllowHexSpecifier) / 255.0f;
+				clr.b = (float)System.Int32.Parse(str.Substring(4,2), 
+					NumberStyles.AllowHexSpecifier) / 255.0f;
+				if(str.Length==8) clr.a = System.Int32.Parse(str.Substring(6,2), 
+					NumberStyles.AllowHexSpecifier) / 255.0f;
+				else clr.a = 1.0f;
+			} catch(System.Exception e) {
+				Debug.Log("Could not convert "+aStr+" to Color. "+e);
+				return new Color(0,0,0,0);
+			}
+		}
+		return clr;
+
 	}
 }

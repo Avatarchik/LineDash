@@ -90,16 +90,20 @@ public class Draw : MonoBehaviour {
 
 			pointEnd = Camera.main.ScreenToWorldPoint (Input.mousePosition);
 			distance = Vector2.Distance (pointStart, pointEnd);
-			angle = Mathf.Atan2(pointEnd.y-pointStart.y, pointEnd.x-pointStart.x)*180 / Mathf.PI;
+		if (pointEnd.x > pointStart.x) {
+			angle = Mathf.Atan2 (pointEnd.y - pointStart.y, pointEnd.x - pointStart.x) * 180 / Mathf.PI;
 			//bridge.transform.localScale = new Vector3 (distance, 0.25f, 0);
-			bridge.GetComponent<Bridge>().start = pointStart;
-			bridge.GetComponent<Bridge>().end = pointEnd;
+			bridge.GetComponent<Bridge> ().start = pointStart;
+			bridge.GetComponent<Bridge> ().end = pointEnd;
+			//bridge.GetComponent<SurfaceEffector2D> ().speed = GameManager.instance.bridgeSpeed;
+			//bridge.GetComponent<SurfaceEffector2D> ().speedVariation = GameManager.instance.bridgeSpeed;
 			bridge.transform.localRotation = Quaternion.Euler (0, 0, angle);
-			bridge.transform.position = new Vector3 (bridge.transform.position.x,bridge.transform.position.y,0);
+			bridge.transform.position = new Vector3 (bridge.transform.position.x, bridge.transform.position.y, 0);
 			bridge.transform.DOScaleY (0.25f, 0);
 			bridge.transform.DOScaleX (distance, 0.5f);
 			
 			pointStart = pointEnd;
+		}
 
 
 			

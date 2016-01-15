@@ -6,6 +6,6 @@ public class Star : MonoBehaviour {
 	void OnEnable(){
 		this.gameObject.transform.localPosition = new Vector3(Random.Range(-2,2)+(Random.Range(0,99)*0.01f),
 			Random.Range(-5,5)+(Random.Range(0,99)*0.01f),0);
-		Debug.Log ("this.gameObject.transform.localPosition "+this.gameObject.transform.localPosition);
+		GetComponent<SpriteRenderer> ().color = new Color32 ((byte)Random.Range (100, 255), (byte)Random.Range (100, 255), (byte)Random.Range (100, 255),255);
 	}
 }

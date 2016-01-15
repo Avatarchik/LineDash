@@ -2,26 +2,34 @@
 using System.Collections;
 
 public class Player : MonoBehaviour {
-	public GameObject particleObj,dead_particle;
+	public GameObject dead_particle;
 	Vector2 vel;
 	float timeIsStop;
 	[SerializeField]Camera cam;
 	Vector2 MaxDistance;
+	Vector3 camMoveMent;
 	int time = 0;
 	int limit = 100;
+	[SerializeField]bool isadd = false;
 	void Awake(){
 		
+
 	}
 	void OnDestroy(){
 		Messenger.Cleanup ();
 	}
 	void Start () {
-		
-		//GetComponent<Rigidbody2D> ().AddTorque (-100);
+		cam = Camera.main;
+		AddListenerMessage();
+	}
+	public void AddListenerMessage(){
+		Messenger.AddListener <int>(CharacterEvent.CHANGE_CHARACTER,OnChangeCharacter);
 		Messenger.AddListener<bool>(GameEvent.GAME_START ,OnGameStart);
 		Messenger.AddListener<bool> (GameEvent.GAME_PAUSE, OnGamePause);
 		Messenger.AddListener (PlayerEvent.PLAYER_HIT_GOAL, OnGoal);
 		Messenger.AddListener (PlayerEvent.HIT_SPIKE, OnHitSpike);
+		isadd = true;
+		Debug.Log ("Listener Ready");
 	}
 	void OnEnable(){
 		
@@ -43,7 +51,8 @@ public class Player : MonoBehaviour {
 	void Update () {
 		if (GameManager.instance.IsGamePause() || !GameManager.instance.IsGameStart())
 			return;
-		cam.transform.position = new Vector3 (this.gameObject.transform.position.x+5, 0, -100);
+		camMoveMent = new Vector3 (this.gameObject.transform.position.x+3, 0, -100);
+		cam.transform.position = Vector3.Lerp (cam.transform.position,camMoveMent,1);//new Vector3 (this.gameObject.transform.position.x+5, 0, -100);
 		//particleObj.transform.position = this.gameObject.transform.position;
 		//Debug.Log (Vector2.Distance (this.gameObject.transform.position, MaxDistance));
 		if (Vector2.Distance (this.gameObject.transform.position, MaxDistance) > 0.06) {
@@ -60,7 +69,7 @@ public class Player : MonoBehaviour {
 		GetComponent<SpriteRenderer> ().enabled = false;
 		GetComponent<CircleCollider2D> ().enabled = false;
 		GameManager.instance.gameEnd = true;
-		particleObj.SetActive (true);
+		//dieObj.SetActive (true);
 	}
 
 
@@ -69,7 +78,7 @@ public class Player : MonoBehaviour {
 	void OnHitSpike(){
 		GetComponent<SpriteRenderer> ().enabled = false;
 		GetComponent<CircleCollider2D> ().enabled = false;
-		//dead_particle.SetActive (true);
+		dead_particle.SetActive (true);
 		StartCoroutine ("WaitToReplay");
 
 	}
@@ -96,5 +105,8 @@ public class Player : MonoBehaviour {
 	void OnGamePause(bool gamePause){
 		GetComponent<Rigidbody2D> ().isKinematic = gamePause;
 		Debug.Log ("Playser OngAmePause " + gamePause);
+	}
+	void OnChangeCharacter(int index){
+		GetComponent<SpriteRenderer> ().sprite = AssetManager.character_sprite.GetSprite ("c_" + index+".png");
 	}
 }

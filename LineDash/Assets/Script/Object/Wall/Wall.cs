@@ -22,7 +22,8 @@ public class Wall : ObjectZone {
 		Messenger.AddListener(GameEvent.CHANGE_COLOR, OnChangeColor);
 		OnChangeColor ();
 	}
-	public void Wakeup(){
+
+	public override void Wakeup(){
 		MoveTwoWall ();
 	}
 
@@ -40,8 +41,8 @@ public class Wall : ObjectZone {
 		//Messenger.AddListener (GameEvent.GAME_MANAGER_INIT,OnGameInit);
 		EventManager.OnChangeColor += OnChangeColor;
 		OnChangeColor ();
+	
 	}
-
 
 	void MoveOneWall(){
 		// 7 - 11 กำลังดี
@@ -60,7 +61,6 @@ public class Wall : ObjectZone {
 		wallUp.transform.DOLocalMoveY (2.3f, 1, false);
 		wallDown.transform.DOLocalMoveY (-2.3f, 1, false);
 	}
-	//pingpong wall
 	void PingPongWall(){
 		posY = Random.Range (-2, 2);
 			if(Random.Range(0,100) > 50){
@@ -95,8 +95,6 @@ public class Wall : ObjectZone {
 		wallDown.GetComponent<SpriteRenderer> ().DOColor (colorTheme.BaseWallColor, 1).SetAutoKill();
 	}
 		
-
-
 	void OnChangeColor(){
 		wallUp.GetComponent<SpriteRenderer> ().DOColor (colorTheme.WallColor, 1).SetAutoKill();
 		wallDown.GetComponent<SpriteRenderer> ().DOColor (colorTheme.WallColor, 1).SetAutoKill();
@@ -104,5 +102,6 @@ public class Wall : ObjectZone {
 	void OnLevelWasLoaded(int level) {
 		Messenger.AddListener(GameEvent.CHANGE_COLOR, OnChangeColor);
 		Messenger.AddListener (GameEvent.GAME_MANAGER_INIT,OnGameInit);
+		Messenger.AddListener(ThemeEvent.CHANGE_THEME , OnChangeColor);
 	}
 }

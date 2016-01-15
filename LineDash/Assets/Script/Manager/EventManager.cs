@@ -16,6 +16,9 @@ public class EventManager : MonoBehaviour {
 
 		public delegate void ChangeColorEvent();
 		public static event ChangeColorEvent OnChangeColor;
+
+		public delegate void ChangeThemeEvent();
+		public static event ChangeThemeEvent OnChangeTheme;
 		
 
 		private static EventManager _instance;
@@ -31,6 +34,9 @@ public class EventManager : MonoBehaviour {
 		}
 		public void ChangeColor(){
 			OnChangeColor ();
+		}
+		public void ChangeTheme(){
+		//	OnChangeTheme ();
 		}
 		public void RestartGame(string msg){
 				Debug.Log ("msg is " + msg);

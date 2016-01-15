@@ -1,0 +1,151 @@
+fileFormatVersion: 2
+guid: bac54bb77ab4941c09c269c09391bad0
+timeCreated: 1452158044
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: c_0.png
+    21300002: c_1.png
+    21300004: c_2.png
+    21300006: c_3.png
+    21300008: c_4.png
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: c_0.png
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 23
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -37.5, y: 37.5}
+        - {x: -37.5, y: -37.5}
+        - {x: 37.5, y: -37.5}
+        - {x: 37.5, y: 37.5}
+    - name: c_1.png
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 102
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -36.5, y: 37.5}
+        - {x: -37.5, y: 36.5}
+        - {x: -37.5, y: -37.5}
+        - {x: 35.5, y: -37.5}
+        - {x: 37.5, y: -35.5}
+        - {x: 37.5, y: 34.5}
+        - {x: 33.5, y: 37.5}
+    - name: c_2.png
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 181
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31.5, y: 37.5}
+        - {x: -37.5, y: 32.5}
+        - {x: -37.5, y: -30.5}
+        - {x: -31.5, y: -37.5}
+        - {x: 31.5, y: -37.5}
+        - {x: 37.5, y: -32.5}
+        - {x: 37.5, y: 30.5}
+        - {x: 32.5, y: 37.5}
+    - name: c_3.png
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 102
+        width: 75
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -34.5, y: 37.5}
+        - {x: -37.5, y: 36.5}
+        - {x: -37.5, y: -31.5}
+        - {x: -30.5, y: -37.5}
+        - {x: 33.5, y: -37.5}
+        - {x: 37.5, y: -31.5}
+        - {x: 37.5, y: 34.5}
+        - {x: 36.5, y: 37.5}
+    - name: c_4.png
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 181
+        width: 98
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -49, y: -31.5}
+        - {x: -42, y: -37.5}
+        - {x: 49, y: -37.5}
+        - {x: 49, y: 4.5}
+        - {x: 42, y: 35.5}
+        - {x: 41, y: 37.5}
+        - {x: -49, y: 37.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
